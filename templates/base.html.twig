@@ -10,9 +10,19 @@
         {% block javascripts %}
             {% block importmap %}{{ importmap('app') }}{% endblock %}
         {% endblock %}
+        <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
     </head>
     <body>
     {% include "_partials/header.html.twig" %}
         {% block body %}{% endblock %}
+
+            <script>
+        const navLinks = document.querySelector('.nav-links')
+        function onToggleMenu(e){
+            e.name = e.name === 'menu' ? 'close' : 'menu'
+            navLinks.classList.toggle('top-[9%]')
+        }
+    </script>
+    
     </body>
 </html>
