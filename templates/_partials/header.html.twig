@@ -1,7 +1,7 @@
 <header class="bg-white">
         <nav class="flex justify-between items-center w-[92%]  mx-auto">
             <div>
-                <img class="w-16 cursor-pointer" src="https://cdn-icons-png.flaticon.com/512/5968/5968204.png" alt="...">
+                <img class="w-24 cursor-pointer" src="{{ asset('/img/logo.png') }}" alt="logo du site">
             </div>
             <div
                 class="nav-links duration-500 md:static absolute bg-white md:min-h-fit min-h-[60vh] left-0 top-[-100%] md:w-auto  w-full flex items-center px-5">
@@ -24,7 +24,11 @@
                 </ul>
             </div>
             <div class="flex items-center gap-6">
-                <button class="bg-[#a6c1ee] text-white px-5 py-2 rounded-full hover:bg-[#87acec]">Sign in</button>
+                {{ ux_icon('simple-line-icons:magnifier', {class: 'w-10 h-10 cursor-pointer'}) }}
+                <button class="flex w-full justify-center rounded-md bg-[#FF642F] px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-[#FF926D] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">S'inscrire</button>
+                /
+                <p class="hover:text-gray-500">Se connecter</p>
+                {# <button class="bg-[#a6c1ee] text-white px-5 py-2 rounded-full hover:bg-[#87acec]">Sign in</button> #}
                 <ion-icon onclick="onToggleMenu(this)" name="menu" class="text-3xl cursor-pointer md:hidden"></ion-icon>
             </div>
     </header>
