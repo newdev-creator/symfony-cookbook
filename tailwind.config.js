@@ -7,7 +7,11 @@ module.exports = {
       sans: ["Inter", "sans-serif"],
       title: ["Great Vibes", "cursive"],
     },
-    extend: {},
+    extend: {
+      colors: {
+        orange: "#FF642F",
+      }
+    },
   },
   plugins: [],
 };
