@@ -15,20 +15,19 @@
         <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
         <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
     </head>
-    <body>
-    {% include "_partials/header.html.twig" %}
-        <main class="min-h-screen">
-            {% block body %}{% endblock %}
-        </main>
-    {% include "_partials/footer.html.twig" %}
+    <body class="font-sans">
+        {% include "_partials/header.html.twig" %}
+            <main class="min-h-screen">
+                {% block body %}{% endblock %}
+            </main>
+        {% include "_partials/footer.html.twig" %}
 
-            <script>
-        const navLinks = document.querySelector('.nav-links')
-        function onToggleMenu(e){
-            e.name = e.name === 'menu' ? 'close' : 'menu'
-            navLinks.classList.toggle('top-[9%]')
-        }
-    </script>
-    
+        <script>
+            const navLinks = document.querySelector('.nav-links')
+            function onToggleMenu(e){
+                e.name = e.name === 'menu' ? 'close' : 'menu'
+                navLinks.classList.toggle('top-[9%]')
+            }
+        </script>
     </body>
 </html>
