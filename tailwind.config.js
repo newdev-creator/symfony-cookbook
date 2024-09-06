@@ -5,6 +5,7 @@ module.exports = {
     fontFamily: {
       serif: ["Playfair Display", "serif"],
       sans: ["Inter", "sans-serif"],
+      title: ["Great Vibes", "cursive"],
     },
     extend: {},
   },

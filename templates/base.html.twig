@@ -10,11 +10,17 @@
         {% block javascripts %}
             {% block importmap %}{{ importmap('app') }}{% endblock %}
         {% endblock %}
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
         <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
     </head>
     <body>
     {% include "_partials/header.html.twig" %}
-        {% block body %}{% endblock %}
+        <main class="min-h-screen">
+            {% block body %}{% endblock %}
+        </main>
+    {% include "_partials/footer.html.twig" %}
 
             <script>
         const navLinks = document.querySelector('.nav-links')
