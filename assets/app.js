@@ -1,4 +1,6 @@
 import "./bootstrap.js";
+import "./vendor/flowbite/flowbite.index.js";
+import "./vendor/flowbite-datepicker/flowbite-datepicker.index.js"
 /*
  * Welcome to your app's main JavaScript file!
  *

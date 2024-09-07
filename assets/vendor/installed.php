@@ -19,4 +19,46 @@
     array (
     ),
   ),
+  'flowbite' => 
+  array (
+    'version' => '2.5.1',
+    'dependencies' => 
+    array (
+      0 => '@popperjs/core',
+      1 => 'flowbite-datepicker',
+    ),
+    'extraFiles' => 
+    array (
+    ),
+  ),
+  '@popperjs/core' => 
+  array (
+    'version' => '2.11.8',
+    'dependencies' => 
+    array (
+    ),
+    'extraFiles' => 
+    array (
+    ),
+  ),
+  'flowbite-datepicker' => 
+  array (
+    'version' => '1.3.0',
+    'dependencies' => 
+    array (
+    ),
+    'extraFiles' => 
+    array (
+    ),
+  ),
+  'flowbite/dist/flowbite.min.css' => 
+  array (
+    'version' => '2.5.1',
+    'dependencies' => 
+    array (
+    ),
+    'extraFiles' => 
+    array (
+    ),
+  ),
 );
