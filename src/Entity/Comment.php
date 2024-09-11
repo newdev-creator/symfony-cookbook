@@ -17,7 +17,7 @@ class Comment
     private ?string $description = null;
 
     #[ORM\Column]
-    private ?bool $isActive = null;
+    private ?bool $isActive = true;
 
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;

@@ -19,7 +19,7 @@ class Category
     private ?string $name = null;
 
     #[ORM\Column]
-    private ?bool $isActive = null;
+    private ?bool $isActive = true;
 
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
@@ -32,6 +32,9 @@ class Category
      */
     #[ORM\ManyToMany(targetEntity: Recipe::class, mappedBy: 'category')]
     private Collection $recipes;
+
+    #[ORM\Column(length: 255)]
+    private ?string $image = null;
 
     public function __construct()
     {
@@ -114,6 +117,18 @@ class Category
         if ($this->recipes->removeElement($recipe)) {
             $recipe->removeCategory($this);
         }
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(string $image): static
+    {
+        $this->image = $image;
 
         return $this;
     }

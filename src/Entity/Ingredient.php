@@ -19,7 +19,7 @@ class Ingredient
     private ?string $name = null;
 
     #[ORM\Column]
-    private ?bool $isActive = null;
+    private ?bool $isActive = true;
 
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;

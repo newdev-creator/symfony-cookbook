@@ -27,7 +27,7 @@ class Step
     private ?\DateTimeImmutable $updatedAt = null;
 
     #[ORM\Column]
-    private ?bool $isActive = null;
+    private ?bool $isActive = true;
 
     #[ORM\ManyToOne(inversedBy: 'step')]
     #[ORM\JoinColumn(nullable: false)]
