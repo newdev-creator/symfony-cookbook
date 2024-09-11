@@ -64,6 +64,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: Comment::class, mappedBy: 'owner')]
     private Collection $comment;
 
+    #[ORM\Column(length: 255)]
+    private ?string $pseudo = null;
+
     public function __construct()
     {
         $this->recipes = new ArrayCollection();
@@ -272,6 +275,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $comment->setOwner(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPseudo(): ?string
+    {
+        return $this->pseudo;
+    }
+
+    public function setPseudo(string $pseudo): static
+    {
+        $this->pseudo = $pseudo;
 
         return $this;
     }
