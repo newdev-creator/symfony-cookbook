@@ -28,12 +28,12 @@ class AppFixtures extends Fixture
         $users = [];
         $recipes = [];
         $ingredients = [];
+        $categories = [];
 
         // INGREDIENT
         for ($i = 0; $i < 50; $i++) {
             $ingredient = new Ingredient();
             $ingredient->setName($faker->word());
-            $ingredient->setActive($faker->boolean());
             $ingredient->setCreatedAt(new \DateTimeImmutable());
             $ingredient->setUpdatedAt(new \DateTimeImmutable());
             $ingredients[] = $ingredient;
@@ -49,7 +49,6 @@ class AppFixtures extends Fixture
             $user->setPseudo($faker->userName());
             $user->setEmail($faker->email());
             $user->setAvatar($faker->imageUrl(100, 100, 'people'));
-            $user->setActive($faker->boolean());
             $user->setCreatedAt(new \DateTimeImmutable());
             $user->setUpdatedAt(new \DateTimeImmutable());
 
@@ -66,9 +65,9 @@ class AppFixtures extends Fixture
             $category = new Category();
             $category->setName($faker->word());
             $category->setImage($faker->imageUrl(640, 480, 'food'));
-            $category->setActive($faker->boolean());
             $category->setCreatedAt(new \DateTimeImmutable());
             $category->setUpdatedAt(new \DateTimeImmutable());
+            $categories[] = $category;
 
             $manager->persist($category);
         }
@@ -84,13 +83,18 @@ class AppFixtures extends Fixture
             $recipe->setRate($faker->numberBetween(1, 5));
             $recipe->setServing($faker->numberBetween(1, 10));
             $recipe->setImage($faker->imageUrl(640, 480, 'food'));
-            $recipe->setActive($faker->boolean());
             $recipe->setCreatedAt(new \DateTimeImmutable());
             $recipe->setUpdatedAt(new \DateTimeImmutable());
 
-            // Assign a random user as the author
+            // Assign a random user
             $recipe->setOwner($faker->randomElement($users));
             $recipes[] = $recipe;
+
+            // Assign a random category
+            $assignedCategories = $faker->randomElements($categories, $faker->numberBetween(1, 10));
+            foreach ($assignedCategories as $category) {
+                $recipe->addCategory($category);
+            }
 
             $manager->persist($recipe);
         }
@@ -114,7 +118,6 @@ class AppFixtures extends Fixture
             for ($i = 0; $i < 5; $i++) {
                 $comment = new Comment();
                 $comment->setDescription($faker->sentence());
-                $comment->setActive($faker->boolean());
                 $comment->setCreatedAt(new \DateTimeImmutable());
                 $comment->setUpdatedAt(new \DateTimeImmutable());
                 $comment->setRecipe($recipe);
@@ -136,7 +139,6 @@ class AppFixtures extends Fixture
                 $manager->persist($recipeIngredient);
             }
         }
-
 
         $manager->flush();
     }
