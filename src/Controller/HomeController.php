@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\CategoryRepository;
 use App\Repository\RecipeRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -10,12 +11,12 @@ use Symfony\Component\Routing\Attribute\Route;
 class HomeController extends AbstractController
 {
     #[Route('', name: 'home_index')]
-    public function index(RecipeRepository $recipeRepository): Response
+    public function index(RecipeRepository $recipeRepository, CategoryRepository $categoryRepository): Response
     {
         // Get 3 random recipe with max rate
         // Find max rate on bdd
         $maxRate = $recipeRepository->findMaxRate();
-        
+
         $recipes = [];
 
         // Stock 3 recipes with rate equal to $maxRate
@@ -24,15 +25,28 @@ class HomeController extends AbstractController
 
             // if $recipes[] dont full, get other recipes with $maxRate - 1
             if (count($recipes) < 3) {
-                for ($rate=$maxRate - 1; $rate >= 1 && count($recipes) < 3; $rate--) { 
+                for ($rate = $maxRate - 1; $rate >= 1 && count($recipes) < 3; $rate--) {
                     $addRecipes = $recipeRepository->findRandomRecipeByRate($rate, 3 - count($recipes));
                     $recipes = array_merge($recipes, $addRecipes);
                 }
             }
         }
 
+        // Get 3 random recipes with category name
+        $category = $categoryRepository->findOneBy([
+            'name' => 'dessert',
+            'isActive' => true,
+        ]);
+
+        if ($category) {
+            $randomRecipes = $recipeRepository->findRandomRecipesByCategory($category->getId(), 3);
+        } else {
+            $randomRecipes = [];
+        }
+
         return $this->render('home/index.html.twig', [
             'recipes' => $recipes,
+            'randomRecipes' => $randomRecipes
         ]);
     }
 }
