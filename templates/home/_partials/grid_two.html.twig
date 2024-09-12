@@ -1,0 +1,22 @@
+<section class="container mx-auto px-40 pb-32">
+	<h1 class="text-4xl font-bold font-serif mb-8">Sweet Tooth</h1>
+	<div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+		{% for randomRecipe in randomRecipes %}
+			<div class=" hover:text-orange transition duration-200 cursor-pointer">
+				<div class="overflow-hidden">
+					<img class="w-full h-auto object-cover rounded-lg hover:scale-110 transition duration-500" src="{{ randomRecipe.image }}" alt="Image de {{ randomRecipe.title }}">
+				</div>
+				<div class="py-4">
+					<div class="flex items-center mb-2">
+						<div class="flex">
+							{% for i in 1..randomRecipe.rate %}
+								{{ ux_icon('material-symbols:star', {class: 'w-6 h-6'}) }}
+							{% endfor %}
+						</div>
+					</div>
+					<h2 class="text-lg font-bold">{{ randomRecipe.title }}</h2>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+</section>
