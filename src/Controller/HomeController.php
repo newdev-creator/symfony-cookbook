@@ -18,7 +18,7 @@ class HomeController extends AbstractController
         $maxRate = $recipeRepository->findMaxRate();
 
         $recipes = [];
-
+        
         // Stock 3 recipes with rate equal to $maxRate
         if ($maxRate !== null) {
             $recipes = $recipeRepository->findRandomRecipeByRate($maxRate, 3);
